@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/utils/constants.dart';
+import 'package:recipe_app/views/home_screen.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -67,7 +68,12 @@ class _StartScreenState extends State<StartScreen> {
                   ),
 
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => const HomeScreen()),
+                      );
+                    },
                     child: Container(
                       height: 55,
                       decoration: BoxDecoration(
