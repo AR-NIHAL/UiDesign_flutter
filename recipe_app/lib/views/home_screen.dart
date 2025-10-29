@@ -16,39 +16,52 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            headerParts(),
+            SizedBox(height: 30),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Hello Nihal, \n",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        TextSpan(
-                          text: "What do you want to eat today",
-                          style: TextStyle(fontSize: 13, color: Colors.black45),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Spacer(),
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.white,
-                        backgroundImage: AssetImage("assets/images/nihal.png"),
-                      ),
-                    ],
-                  ),
-                ],
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding headerParts() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: "Hello Nihal, \n",
+                  style: TextStyle(fontSize: 16),
+                ),
+                TextSpan(
+                  text: "What do you want to eat today",
+                  style: TextStyle(fontSize: 13, color: Colors.black45),
+                ),
+              ],
+            ),
+          ),
+          Spacer(),
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage("assets/images/nihal.png"),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
