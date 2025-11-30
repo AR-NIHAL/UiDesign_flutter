@@ -183,3 +183,47 @@ class FilterButtonsRow extends StatelessWidget {
     );
   }
 }
+
+// -----------------------------
+// Filter Buttons Row
+// -----------------------------
+class FilterButtonsRow extends StatelessWidget {
+  const FilterButtonsRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> filters = [
+      {'label': 'SUBJECT', 'icon': Icons.book},
+      {'label': 'COST', 'icon': Icons.attach_money},
+      {'label': 'RATING', 'icon': Icons.star_border},
+      {'label': 'LOCATION', 'icon': Icons.location_on_outlined},
+    ];
+
+    return Wrap(
+      spacing: 12.0,
+      runSpacing: 12.0,
+      children: filters.map((filter) {
+        return FilterChip(
+          label: Text(filter['label']),
+          avatar: Icon(filter['icon'], size: 18),
+          onSelected: (bool selected) {
+            // Handle filter selection
+          },
+          selected: false,
+          backgroundColor: Colors.white,
+          selectedColor: Colors.indigo.shade50,
+          checkmarkColor: Colors.indigo.shade700,
+          labelStyle: TextStyle(
+            color: Colors.indigo.shade700,
+            fontWeight: FontWeight.bold,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(color: Colors.indigo.shade300),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
