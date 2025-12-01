@@ -7,7 +7,70 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            headerParts(),
+            SizedBox(height: 30),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(35),
+                  color: Colors.white,
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Icon(Icons.search, color: Colors.black),
+                    hintText: "Search",
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
+  Padding headerParts() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: "Hello Nihal, \n",
+                  style: TextStyle(fontSize: 16),
+                ),
+                TextSpan(
+                  text: "What do you want to eat today",
+                  style: TextStyle(fontSize: 13, color: Colors.black45),
+                ),
+              ],
+            ),
+          ),
+          Spacer(),
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage("assets/images/nihal.png"),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
