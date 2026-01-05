@@ -33,9 +33,6 @@ class _TutorDirScreenState extends State<TutorDirScreen> {
   }
 }
 
-// -----------------------------
-// Sliver AppBar
-// -----------------------------
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({super.key});
 
@@ -60,6 +57,16 @@ class CustomSliverAppBar extends StatelessWidget {
             fontSize: 26,
             fontWeight: FontWeight.bold,
             color: Colors.white,
+            actions: [
+                      IconButton(
+                                  icon: const Icon(Icons.notifications_none),
+                                                          onPressed: () {},
+                                      ),
+                                      IconButton(
+                                        icon: const Icon(Icons.person_outline),
+                                        onPressed: () {},
+                                      ),
+],
           ),
         ),
       ),
@@ -67,9 +74,6 @@ class CustomSliverAppBar extends StatelessWidget {
   }
 }
 
-// -----------------------------
-// App Drawer
-// -----------------------------
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
