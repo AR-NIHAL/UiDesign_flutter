@@ -93,6 +93,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     border: InputBorder.none,
                     prefixIcon: Icon(Icons.search, color: Colors.black),
                     hintText: "Search",
+                    TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Icon(Icons.search, color: Colors.black),
+                    hintText: "Search",
                   ),
                 ),
               ),
