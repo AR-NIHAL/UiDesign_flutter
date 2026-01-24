@@ -21,7 +21,7 @@ class _MovieDisplayState extends State<MovieDisplay> {
           children: [
             Image.network(
               movieItems[current].image,
-              fit: BoxFit.cover,
+              
             )
           ],
         ),
