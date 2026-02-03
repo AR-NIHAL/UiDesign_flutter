@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             TextSpan(
               children: [
                 TextSpan(
-                  text: "Hello Nihal, \n",
+                  text: "Nihal, \n",
                   style: TextStyle(fontSize: 16),
                 ),
                 TextSpan(
