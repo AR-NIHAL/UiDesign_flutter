@@ -31,6 +31,12 @@ class _DetailScreenState extends State<DetailScreen> {
               child: FadeInUp(
                 duration: Duration(milliseconds: 500),
                 child: Transform.translate(offset: Offset(0, 1,)),
+
+                bottom: PreferredSize(
+              preferredSize: Size.fromHeight(40),
+              child: FadeInUp(
+                duration: Duration(milliseconds: 500),
+                child: Transform.translate(offset: Offset(0, 1,)),
               ),
             ),
           ),
