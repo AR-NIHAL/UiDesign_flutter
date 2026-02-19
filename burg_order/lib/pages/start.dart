@@ -22,6 +22,14 @@ class Start extends StatelessWidget {
                 fontSize: 24,
               ),
             ),
+            Text(
+              "Naina's Flavour Fest",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+              ),
+            ),
 
             Padding(
               padding: EdgeInsets.only(left: 20.0, right: 20.0),
