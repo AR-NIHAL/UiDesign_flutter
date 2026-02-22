@@ -107,7 +107,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
+//Padding headerParts() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan( //
   Padding headerParts() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
