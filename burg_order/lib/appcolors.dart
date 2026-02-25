@@ -6,7 +6,7 @@ class AppColors {
   static const text = Color(0xFF111827);
   static const muted = Color(0xFF6B7280);
 
-  static const primary = Color(0xFFFF4D4D); // লাল accent (স্ক্রিনের মতো)
+  static const primary = Color(0xFFFF4D4D); 
   static const chipRed = Color(0xFFFF4D4D);
 }
 
