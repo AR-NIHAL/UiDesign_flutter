@@ -62,10 +62,7 @@ class CustomSliverAppBar extends StatelessWidget {
                                   icon: const Icon(Icons.notifications_none),
                                                           onPressed: () {},
                                       ),
-                                      IconButton(
-                                        icon: const Icon(Icons.person_outline),
-                                        onPressed: () {},
-                                      ),
+                                     
 ],
           ),
         ),
