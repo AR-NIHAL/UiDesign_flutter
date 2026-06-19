@@ -20,7 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.white,
-            expandedHeight: size.height * 0.61,
+            expandedHeight: size.height * 0.51,
             floating: true,
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: [StretchMode.zoomBackground],
