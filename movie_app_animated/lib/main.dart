@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_animated/movie.dart';
+import 'package:movie_app_animated/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,11 +8,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MovieDisplay(),
+      title: 'Bottom Nav Bar Collection',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorSchemeSeed: Colors.deepPurple,
+        useMaterial3: true,
+      ),
+      home: const HomeScreen(),
     );
   }
 }
