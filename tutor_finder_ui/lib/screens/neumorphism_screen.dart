@@ -3,6 +3,10 @@ import '../widgets/neumorphic/neumorphic_button.dart';
 import '../widgets/neumorphic/neumorphic_card.dart';
 import '../widgets/neumorphic/neumorphic_toggle.dart';
 import '../widgets/neumorphic/neumorphic_icon.dart';
+import '../widgets/neumorphic/neumorphic_slider.dart';
+import '../widgets/neumorphic/neumorphic_input.dart';
+import '../utils/code_snippets.dart';
+import '../common/show_code_overlay.dart';
 
 class NeumorphismScreen extends StatefulWidget {
   const NeumorphismScreen({super.key});
@@ -13,6 +17,7 @@ class NeumorphismScreen extends StatefulWidget {
 
 class _NeumorphismScreenState extends State<NeumorphismScreen> {
   bool _toggleValue = false;
+  double _sliderValue = 40;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,6 @@ class _NeumorphismScreenState extends State<NeumorphismScreen> {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          // Explanation
           Text(
             'Neumorphism (Neo-skeuomorphism) creates UI elements that appear '
             'to extrude from or be pressed into the background. The illusion '
@@ -38,13 +42,16 @@ class _NeumorphismScreenState extends State<NeumorphismScreen> {
                 ),
           ),
           const SizedBox(height: 24),
-          Text('Neumorphic Button',
-              style: Theme.of(context).textTheme.titleMedium),
+
+          // Button
+          _sectionHeader(context, 'Neumorphic Button'),
           const SizedBox(height: 12),
           const NeumorphicButton(),
+          ShowCodeOverlay(code: CodeSnippets.neumorphicButton),
           const SizedBox(height: 28),
-          Text('Neumorphic Card',
-              style: Theme.of(context).textTheme.titleMedium),
+
+          // Card
+          _sectionHeader(context, 'Neumorphic Card'),
           const SizedBox(height: 12),
           NeumorphicCard(
             backgroundColor: bgColor,
@@ -64,17 +71,21 @@ class _NeumorphismScreenState extends State<NeumorphismScreen> {
               ),
             ),
           ),
+          ShowCodeOverlay(code: CodeSnippets.neumorphicCard),
           const SizedBox(height: 28),
-          Text('Neumorphic Toggle',
-              style: Theme.of(context).textTheme.titleMedium),
+
+          // Toggle
+          _sectionHeader(context, 'Neumorphic Toggle'),
           const SizedBox(height: 12),
           NeumorphicToggle(
             value: _toggleValue,
             onChanged: (v) => setState(() => _toggleValue = v),
           ),
+          ShowCodeOverlay(code: CodeSnippets.neumorphicToggle),
           const SizedBox(height: 28),
-          Text('Neumorphic Icon',
-              style: Theme.of(context).textTheme.titleMedium),
+
+          // Icon
+          _sectionHeader(context, 'Neumorphic Icon'),
           const SizedBox(height: 12),
           Wrap(
             spacing: 16,
@@ -87,9 +98,31 @@ class _NeumorphismScreenState extends State<NeumorphismScreen> {
               NeumorphicIcon(icon: Icons.search_outlined),
             ],
           ),
+          ShowCodeOverlay(code: CodeSnippets.neumorphicIcon),
+          const SizedBox(height: 28),
+
+          // Slider
+          _sectionHeader(context, 'Neumorphic Slider'),
+          const SizedBox(height: 12),
+          NeumorphicSlider(
+            value: _sliderValue,
+            onChanged: (v) => setState(() => _sliderValue = v),
+          ),
+          ShowCodeOverlay(code: CodeSnippets.neumorphicSlider),
+          const SizedBox(height: 28),
+
+          // Input
+          _sectionHeader(context, 'Neumorphic Input'),
+          const SizedBox(height: 12),
+          const NeumorphicInput(hintText: 'Type something...'),
+          ShowCodeOverlay(code: CodeSnippets.neumorphicInput),
           const SizedBox(height: 40),
         ],
       ),
     );
+  }
+
+  Widget _sectionHeader(BuildContext context, String title) {
+    return Text(title, style: Theme.of(context).textTheme.titleMedium);
   }
 }

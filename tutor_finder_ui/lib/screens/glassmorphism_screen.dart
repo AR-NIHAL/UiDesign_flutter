@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../widgets/glassmorphic/glassmorphic_card.dart';
 import '../widgets/glassmorphic/glassmorphic_navbar.dart';
 import '../widgets/glassmorphic/glassmorphic_avatar.dart';
+import '../widgets/glassmorphic/glassmorphic_button.dart';
+import '../widgets/glassmorphic/glassmorphic_dialog.dart';
+import '../utils/code_snippets.dart';
+import '../common/show_code_overlay.dart';
 
 class GlassmorphismScreen extends StatelessWidget {
   const GlassmorphismScreen({super.key});
@@ -11,7 +15,6 @@ class GlassmorphismScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Glassmorphism')),
       body: Container(
-        // A vibrant gradient background makes the glass effect visible.
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -32,7 +35,7 @@ class GlassmorphismScreen extends StatelessWidget {
               '1. BackdropFilter + ImageFilter.blur() — blurs everything '
               'behind the widget\n'
               '2. Semi-transparent background (e.g. '
-              'Colors.white.withOpacity(0.15))\n'
+              'Colors.white.withValues(alpha: 0.15))\n'
               '3. A subtle border with low opacity\n'
               '4. A light shadow for depth\n\n'
               'The result is a "frosted glass" effect that reveals the '
@@ -43,11 +46,9 @@ class GlassmorphismScreen extends StatelessWidget {
                   ),
             ),
             const SizedBox(height: 24),
-            Text('Glassmorphic Card',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(color: Colors.white)),
+
+            // Card
+            _sectionHeader(context, 'Glassmorphic Card'),
             const SizedBox(height: 12),
             const GlassmorphicCard(
               child: Padding(
@@ -72,46 +73,68 @@ class GlassmorphismScreen extends StatelessWidget {
                 ),
               ),
             ),
+            _whiteCodeOverlay(context, CodeSnippets.glassmorphicCard),
             const SizedBox(height: 28),
-            Text('Glassmorphic Avatar',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(color: Colors.white)),
+
+            // Avatar
+            _sectionHeader(context, 'Glassmorphic Avatar'),
             const SizedBox(height: 12),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                GlassmorphicAvatar(
-                  initials: 'A',
-                  size: 60,
-                ),
-                GlassmorphicAvatar(
-                  initials: 'B',
-                  size: 60,
-                ),
-                GlassmorphicAvatar(
-                  initials: 'C',
-                  size: 60,
-                ),
-                GlassmorphicAvatar(
-                  initials: 'D',
-                  size: 60,
-                ),
+                GlassmorphicAvatar(initials: 'A', size: 60),
+                GlassmorphicAvatar(initials: 'B', size: 60),
+                GlassmorphicAvatar(initials: 'C', size: 60),
+                GlassmorphicAvatar(initials: 'D', size: 60),
               ],
             ),
+            _whiteCodeOverlay(context, CodeSnippets.glassmorphicAvatar),
             const SizedBox(height: 28),
-            Text('Glassmorphic Nav Bar (simulated)',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(color: Colors.white)),
+
+            // Nav Bar
+            _sectionHeader(context, 'Glassmorphic Nav Bar'),
             const SizedBox(height: 12),
             const GlassmorphicNavBar(),
+            _whiteCodeOverlay(context, CodeSnippets.glassmorphicNavbar),
+            const SizedBox(height: 28),
+
+            // Button
+            _sectionHeader(context, 'Glassmorphic Button'),
+            const SizedBox(height: 12),
+            GlassmorphicButton(
+              label: 'Glass Button',
+              onPressed: () {},
+            ),
+            _whiteCodeOverlay(context, CodeSnippets.glassmorphicButton),
+            const SizedBox(height: 28),
+
+            // Dialog
+            _sectionHeader(context, 'Glassmorphic Dialog'),
+            const SizedBox(height: 12),
+            GlassmorphicButton(
+              label: 'Open Glass Dialog',
+              onPressed: () => GlassmorphicDialog.show(context),
+            ),
+            _whiteCodeOverlay(context, CodeSnippets.glassmorphicDialog),
             const SizedBox(height: 40),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _sectionHeader(BuildContext context, String title) {
+    return Text(title,
+        style: Theme.of(context)
+            .textTheme
+            .titleMedium
+            ?.copyWith(color: Colors.white));
+  }
+
+  Widget _whiteCodeOverlay(BuildContext context, String code) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: ShowCodeOverlay(code: code),
     );
   }
 }

@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'neumorphism_screen.dart';
 import 'glassmorphism_screen.dart';
+import 'playground_screen.dart';
+import 'about_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void _navigate(BuildContext context, Widget screen) {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) => screen,
+        transitionsBuilder: (_, anim, __, child) => FadeTransition(
+          opacity: anim,
+          child: child,
+        ),
+        transitionDuration: const Duration(milliseconds: 300),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +27,13 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Modern UI Showcase'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info_outline),
+            tooltip: 'About',
+            onPressed: () => _navigate(context, const AboutScreen()),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -31,24 +54,19 @@ class HomeScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const Spacer(flex: 2),
-            // Neumorphism card
             _StyleCard(
               title: 'Neumorphism',
               subtitle: 'Soft shadows & extrusion',
               description:
-                  'Neumorphism (Neo-skeuomorphism) uses dual BoxShadows — '
-                  'a light shadow top-left and a dark shadow bottom-right — '
-                  'to create the illusion of elements extruded from or '
-                  'inset into the background.',
+                  'Neumorphism uses dual BoxShadows — a light shadow '
+                  'top-left and a dark shadow bottom-right — to create '
+                  'the illusion of elements extruded from or inset into '
+                  'the background.',
               icon: Icons.touch_app_outlined,
               color: const Color(0xFF7C4DFF),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const NeumorphismScreen()),
-              ),
+              onTap: () => _navigate(context, const NeumorphismScreen()),
             ),
-            const SizedBox(height: 20),
-            // Glassmorphism card
+            const SizedBox(height: 14),
             _StyleCard(
               title: 'Glassmorphism',
               subtitle: 'Frosted glass & blur',
@@ -58,10 +76,19 @@ class HomeScreen extends StatelessWidget {
                   'glass. A subtle border and shadow complete the effect.',
               icon: Icons.blur_on_outlined,
               color: const Color(0xFF00BCD4),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const GlassmorphismScreen()),
-              ),
+              onTap: () => _navigate(context, const GlassmorphismScreen()),
+            ),
+            const SizedBox(height: 14),
+            _StyleCard(
+              title: 'Interactive Playground',
+              subtitle: 'Tweak & learn by doing',
+              description:
+                  'Adjust blur, shadow distance, opacity, and corner '
+                  'radius in real time. See how each parameter changes '
+                  'the look of both styles instantly.',
+              icon: Icons.tune_outlined,
+              color: const Color(0xFFFF6F00),
+              onTap: () => _navigate(context, const PlaygroundScreen()),
             ),
             const Spacer(flex: 3),
           ],
@@ -100,7 +127,7 @@ class _StyleCard extends StatelessWidget {
         onTap: onTap,
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             gradient: LinearGradient(
@@ -109,36 +136,28 @@ class _StyleCard extends StatelessWidget {
               end: Alignment.bottomRight,
             ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Row(
-                children: [
-                  Icon(icon, color: color, size: 32),
-                  const SizedBox(width: 12),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(fontWeight: FontWeight.w600)),
-                      Text(subtitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(color: Colors.grey[500])),
-                    ],
-                  ),
-                ],
+              Icon(icon, color: color, size: 28),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(fontWeight: FontWeight.w600)),
+                    Text(subtitle,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.copyWith(color: Colors.grey[500])),
+                  ],
+                ),
               ),
-              const SizedBox(height: 12),
-              Text(description,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Colors.grey[600],
-                        height: 1.5,
-                      )),
+              Icon(Icons.chevron_right, color: Colors.grey[400], size: 20),
             ],
           ),
         ),
